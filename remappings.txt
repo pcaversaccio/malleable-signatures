@@ -1,1 +1,2 @@
 forge-std/=lib/forge-std/src/
+solidity-bytes-utils/=lib/solidity-bytes-utils/contracts/

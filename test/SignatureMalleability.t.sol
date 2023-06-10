@@ -3,20 +3,43 @@ pragma solidity 0.8.20;
 
 import {Test} from "forge-std/Test.sol";
 
-/**
- * @dev Error that occurs when the signature length is invalid.
- * @param emitter The contract that emits the error.
- */
-error InvalidSignatureLength(address emitter);
+import {BytesLib} from "solidity-bytes-utils/BytesLib.sol";
 
-/**
- * @dev Error that occurs when the signature value `s` is invalid.
- * @param emitter The contract that emits the error.
- */
-error InvalidSignatureSValue(address emitter);
+contract ValidateSignature {
+    /**
+     * @dev Error that occurs when the signature was already used.
+     * @param emitter The contract that emits the error.
+     */
+    error SignatureUsed(address emitter);
+
+    mapping(address sender => uint256 counter) public signatureCounter;
+    mapping(bytes signature => bool flag) private _signatureUsed;
+
+    function verifySignature(bytes memory signature) public {
+        if (_signatureUsed[msg.sender]) revert SignatureUsed(address(this));
+        unchecked {
+            signatureCounter[msg.sender] += 1;
+        }
+        _signatureUsed[msg.sender] = true;
+    }
+}
 
 contract SignatureMalleabilityTest is Test {
     using BytesLib for bytes;
+
+    /**
+     * @dev Error that occurs when the signature length is invalid.
+     * @param emitter The contract that emits the error.
+     */
+    error InvalidSignatureLength(address emitter);
+
+    /**
+     * @dev Error that occurs when the signature value `s` is invalid.
+     * @param emitter The contract that emits the error.
+     */
+    error InvalidSignatureSValue(address emitter);
+
+    address private self = address(this);
 
     /**
      * @dev Transforms a standard signature into an EIP-2098
@@ -33,8 +56,7 @@ contract SignatureMalleabilityTest is Test {
         return short;
     }
 
-    function setUp() public {
-        counter = new Counter();
-        counter.setNumber(0);
+    function testMalleableSignature() public {
+
     }
 }
