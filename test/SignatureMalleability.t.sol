@@ -110,8 +110,12 @@ contract SignatureMalleabilityTest is Test {
          */
         bytes memory signature2098 = to2098Format(signature);
         verifier.verifySignature(hash, signature2098);
-        /// @dev Malleability successfully exploited.
+        /// @dev Malleability successfully exploited!
         assertEq(verifier.signatureCounter(alice), 2);
+
+        vm.expectRevert(abi.encodeWithSelector(SignatureUsed.selector, address(verifier)));
+        /// @dev Must revert since the signature has already been used.
+        verifier.verifySignature(hash, signature2098);
         vm.stopPrank();
     }
 }
