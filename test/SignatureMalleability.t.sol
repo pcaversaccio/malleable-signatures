@@ -90,7 +90,7 @@ contract SignatureMalleabilityTest is Test {
 
     function testMalleableSignature() public {
         (address alice, uint256 key) = makeAddrAndKey("alice");
-        bytes32 hash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", "WAGMI"));
+        bytes32 hash = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", keccak256(abi.encode("WAGMI"))));
         (uint8 v, bytes32 r, bytes32 s) = vm.sign(key, hash);
         bytes memory signature = abi.encodePacked(r, s, v);
 
