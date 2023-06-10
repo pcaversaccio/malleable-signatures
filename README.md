@@ -5,4 +5,4 @@
 
 This repository implements a simplified [PoC](./test/SignatureMalleability.t.sol) that showcases how signature malleability attacks, using compact signatures, can be executed. We the OpenZeppelin version [`4.6`](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/release-v4.6), which is vulnerable to the signature malleability exploit, using compact signatures showcased in this PoC. The vulnerability was patched in version [`4.7.3`](https://github.com/OpenZeppelin/openzeppelin-contracts/releases/tag/v4.7.3).
 
-**TL;DR: Signatures must not be used as unique identifiers since the `ecrecover` opcode allows for malleable (non-unique) signatures.**
+**TL;DR: Signatures must not be used as unique identifiers since the [`ecrecover`](https://www.evm.codes/precompiled#0x01?fork=shanghai) precompile allows for malleable (non-unique) signatures.**
