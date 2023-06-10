@@ -1,6 +1,7 @@
+## defaults for all profiles
 [profile.default]
-src = "src"
-out = "out"
-libs = ["lib"]
-
-# See more config options https://github.com/foundry-rs/foundry/tree/master/config
+test = 'test'                 # the test directory
+out = 'out'                   # the output directory (for artifacts)
+libs = ['lib']                # a list of library directories
+cache = true                  # whether to cache builds or not
+cache_path = 'cache'          # where the cache is stored if enabled

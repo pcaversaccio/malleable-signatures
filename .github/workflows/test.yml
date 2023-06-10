@@ -1,19 +1,22 @@
-name: test
+name: 🕵️‍♂️ Test smart contracts
 
-on: workflow_dispatch
+on: [push, pull_request]
 
-env:
-  FOUNDRY_PROFILE: ci
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
 
 jobs:
-  check:
+  tests:
+    runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: true
+      matrix:
+        os:
+          - ubuntu-latest
 
-    name: Foundry project
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           submodules: recursive
 
@@ -22,13 +25,5 @@ jobs:
         with:
           version: nightly
 
-      - name: Run Forge build
-        run: |
-          forge --version
-          forge build --sizes
-        id: build
-
-      - name: Run Forge tests
-        run: |
-          forge test -vvv
-        id: test
+      - name: Foundry tests
+        run: forge test -vvv
