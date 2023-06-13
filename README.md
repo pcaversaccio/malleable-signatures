@@ -3,7 +3,7 @@
 [![Test smart contracts](https://github.com/pcaversaccio/malleable-signatures/actions/workflows/test.yml/badge.svg)](https://github.com/pcaversaccio/malleable-signatures/actions/workflows/test.yml)
 [![License: WTFPL](https://img.shields.io/badge/License-WTFPL-blue.svg)](http://www.wtfpl.net/about)
 
-This repository implements a simplified [PoC](./test/SignatureMalleability.t.sol) that demonstrates how signature malleability attacks using [compact signatures](https://eips.ethereum.org/EIPS/eip-2098) can be executed. The PoC showcases two distinct issues:
+This repository implements a simplified [PoC](./test/SignatureMalleability.t.sol) that demonstrates how signature malleability attacks using [compact signatures](https://eips.ethereum.org/EIPS/eip-2098) can be executed. The PoC showcases two interconnected issues:
 
 1. A vulnerability with the [OpenZeppelin `4.6` ECDSA library](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/release-v4.6/contracts/utils/cryptography/ECDSA.sol) which is vulnerable to the signature malleability exploit. The vulnerability was patched in version [`4.7.3`](https://github.com/OpenZeppelin/openzeppelin-contracts/releases/tag/v4.7.3). Also, see [here](https://github.com/OpenZeppelin/openzeppelin-contracts/security/advisories/GHSA-4h98-2769-gh6h) for the published security advisory.
 
