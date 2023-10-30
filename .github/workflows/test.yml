@@ -1,6 +1,6 @@
 name: 🕵️‍♂️ Test smart contracts
 
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 
 concurrency:
   group: ${{github.workflow}}-${{github.ref}}
@@ -25,5 +25,22 @@ jobs:
         with:
           version: nightly
 
+      - name: Show the Foundry CI config
+        run: forge config
+        env:
+          FOUNDRY_PROFILE: ci
+
       - name: Foundry tests
-        run: forge test -vvv
+        run: forge test
+        env:
+          FOUNDRY_PROFILE: ci
+
+      - name: Show the Foundry default config
+        run: forge config
+        env:
+          FOUNDRY_PROFILE: default
+
+      - name: Run snapshot
+        run: NO_COLOR=1 forge snapshot >> $GITHUB_STEP_SUMMARY
+        env:
+          FOUNDRY_PROFILE: default
