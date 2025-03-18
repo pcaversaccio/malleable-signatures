@@ -1,7 +1,7 @@
 # Signature Malleability
 
 [![Test smart contracts](https://github.com/pcaversaccio/malleable-signatures/actions/workflows/test.yml/badge.svg)](https://github.com/pcaversaccio/malleable-signatures/actions/workflows/test.yml)
-[![License: WTFPL](https://img.shields.io/badge/License-WTFPL-blue.svg)](http://www.wtfpl.net/about)
+[![License: WTFPL](https://img.shields.io/badge/License-WTFPL-blue.svg)](https://www.wtfpl.net/about/)
 
 This repository implements a simplified [PoC](./test/SignatureMalleability.t.sol) that demonstrates how signature malleability attacks using [compact signatures](https://eips.ethereum.org/EIPS/eip-2098) can be executed. The PoC showcases two interconnected issues:
 
