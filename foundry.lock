@@ -1,0 +1,20 @@
+{
+  "lib/forge-std": {
+    "branch": {
+      "name": "master",
+      "rev": "100b0d756adda67bc70aab816fa5a1a95dcf78b6"
+    }
+  },
+  "lib/openzeppelin-contracts": {
+    "branch": {
+      "name": "release-v4.6",
+      "rev": "a7818b49a481e867230d4fa49d106bd304c5d95d"
+    }
+  },
+  "lib/solidity-bytes-utils": {
+    "branch": {
+      "name": "master",
+      "rev": "fc502455bb2a7e26a743378df042612dd50d1eb9"
+    }
+  }
+}
