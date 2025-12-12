@@ -1,17 +1,18 @@
 ## defaults for all profiles
 [profile.default]
-test = "test"                 # the test directory
-out = "out"                   # the output directory (for artifacts)
-libs = ["lib"]                # a list of library directories
-cache = true                  # whether to cache builds or not
-cache_path = "cache"          # where the cache is stored if enabled
-solc_version = "0.8.30"       # override for the solc version
-evm_version = "prague"        # set the EVM target version
-optimizer = true              # enable the solc optimiser
-optimizer_runs = 999_999      # the number of optimiser runs
-verbosity = 3                 # the verbosity of tests
+test = "test"                        # the test directory
+out = "out"                          # the output directory (for artifacts)
+libs = ["lib"]                       # a list of library directories
+cache = true                         # whether to cache builds or not
+cache_path = "cache"                 # where the cache is stored if enabled
+solc_version = "0.8.31"              # override for the solc version
+ignored_error_codes = [2_424, 4_591] # ignore the deprecated `memory-safe-assembly` warning and the warning about too many warnings
+evm_version = "osaka"                # set the EVM target version
+optimizer = true                     # enable the solc optimiser
+optimizer_runs = 999_999             # the number of optimiser runs
+verbosity = 3                        # the verbosity of tests
 
 ## default overrides for the CI runs
 [profile.ci]
-force = true                  # always perform a clean build
-verbosity = 4                 # increase the verbosity of tests
+force = true                         # always perform a clean build
+verbosity = 4                        # increase the verbosity of tests
